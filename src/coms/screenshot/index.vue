@@ -65,13 +65,28 @@ export default {
       if (!imageUrl) {
         this.$alert(this.$t('screenshots.alert'), 'error')
       } else {
-        let a = document.createElement('a');
-        a.innerHTML = ' ';
-        a.id = 'download-btn-pic';
-        a.download = this.fileName; //不能为空，ie浏览器会不能兼容
-        a.href = imageUrl;
-        this.clickEvent(a);
+        this.dataURIToBlob(imageUrl); // 先转化成blob文件，不然base64的长度会超出href的长度限制下载失败
       }
+    },
+    dataURIToBlob (dataURI) {
+      let binStr = atob(dataURI.split(',')[1]),
+        len = binStr.length,
+        arr = new Uint8Array(len);
+
+      for (let i = 0; i < len; i++) {
+        arr[i] = binStr.charCodeAt(i);
+      }
+
+      this.callback(new Blob([arr]));
+    },
+    callback (blob) {
+      let a = document.createElement('a');
+      a.innerHTML = ' ';
+      a.id = 'download-btn-pic';
+      a.download = this.fileName || '截图'; //不能为空，ie浏览器会不能兼容
+      a.innerHTML = 'download';
+      a.href = URL.createObjectURL(blob);
+      this.clickEvent(a);
     },
     clickEvent (a) {
       if (document.all) {
