@@ -1,0 +1,55 @@
+.re-menu-container{
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: $color-white;
+  position: relative;
+
+  .re-menu {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 0 55px;
+    list-style: none;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-grey_dark;
+    overflow: hidden;
+
+    .re-menu-item {
+      height: 60px;
+      padding: 0 20px;
+      list-style: none;
+      transition: border-color .3s,background-color .3s,color .3s;
+      box-sizing: border-box;
+      font-size: 14px;
+      line-height: 60px;
+      color: $text-default;
+      white-space: nowrap;
+      float: left;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-black!important;
+      }
+    }
+
+    .re-menu-item--active {
+      border-bottom: 2px solid $color-active;
+      color: $color-active;
+    }
+
+    .re-menu-item--disabled {
+      opacity: .25;
+      cursor: not-allowed;
+      background: none!important;
+    }
+  }
+
+  .re-right-tools {
+    position: absolute;
+    font-size: 12px;
+    height: 60px;
+    line-height: 60px;
+    right: 10px;
+    top: 0;
+  }
+}

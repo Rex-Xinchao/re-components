@@ -1,0 +1,27 @@
+@import './icon';
+@import './animation';
+
+$text-default: #606266;
+
+$color-black: #303133;
+$color-white: #ffffff;
+$color-grey_dark: #a0a0a0;
+$color-grey_mid: #cccccc;
+$color-grey_light: #edf2fc;
+$color-active: #409eff;
+
+$color-primary: #409eff;
+$color-success: rgb(19, 206, 102);
+$color-danger: #409eff;
+$color-warn: #409eff;
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin no-space {
+  margin: 0;
+  padding: 0;
+}

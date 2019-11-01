@@ -1,0 +1,16 @@
+.re-compress-container {
+  width: 250px;
+  height: auto;
+
+  .re-compress-show {
+    width: 100%;
+    overflow: hidden;
+
+    .re-compress__text {
+      @include no-space;
+      @include text-ellipsis;
+      font-size: 12px;
+      color: $text-default;
+    }
+  }
+}

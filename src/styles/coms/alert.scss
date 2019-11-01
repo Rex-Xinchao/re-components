@@ -1,0 +1,39 @@
+.re-alert {
+  display: flex;
+  align-items: center;
+  width: 380px;
+  height: auto;
+  overflow: hidden;
+  padding: 15px 15px 15px 20px;
+  border-radius: 4px;
+  border: 1px solid $color-grey_dark;
+  box-sizing: border-box;
+  background-color: $color-grey_light;
+  position: absolute;
+  top: 5vh;
+  left: calc(50% - 190px);
+
+  .re-alert--text {
+    @include no-space;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+.slide-fade-enter-active {
+  transition: all .8s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-leave, .slide-fade-enter-to {
+  top: 5vh;
+  opacity: 1;
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+  top: 0;
+  opacity: 0;
+}

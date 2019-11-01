@@ -1,0 +1,32 @@
+.re-switch {
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  float: left;
+  background-color: $color-success;
+  border: 1px solid $color-success;
+  overflow: hidden;
+  cursor: pointer;
+
+  .re-switch-circle {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 1px;
+    border-radius: 10px;
+    background-color: white;
+    float: left;
+  }
+}
+
+.re-switch-active {
+  .re-switch-circle {
+    float: right;
+  }
+}
+
+.re-switch-disabled {
+  background-color: $color-grey_light!important;
+  border: 1px solid $color-grey_light!important;
+  cursor: not-allowed;
+}

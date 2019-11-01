@@ -1,0 +1,47 @@
+.re-progress-circle {
+  position: relative;
+  .re-progress-text {
+    display: block;
+    position: absolute;
+    line-height: 16px;
+    font-size: 12px;
+  }
+}
+.re-progress{
+  width: 250px;
+  height: auto;
+
+  .re-progress-bar{
+    display: inline-block;
+    width: calc(100% - 60px);
+    height: 6px;
+    vertical-align: middle;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #ebeef5;
+
+    .re-progress-bar_inner{
+      height: 100%;
+      border-radius: 4px;
+      box-sizing: border-box;
+      line-height: 1;
+    }
+  }
+
+  .re-progress-text{
+    display: inline-block;
+    width: 50px;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 1;
+    color: $text-default;
+  }
+  .re-progress-text_inner{
+    width: 100%;
+    color: $color-black;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 1;
+    text-align: right;
+  }
+}

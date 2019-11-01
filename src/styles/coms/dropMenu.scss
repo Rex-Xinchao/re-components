@@ -1,0 +1,45 @@
+.re-drop-menu {
+  width: 120px;
+  height: auto;
+  text-align: center;
+  position: relative;
+
+  .re-drop-link {
+    cursor: pointer;
+    font-size: 12px;
+    color: $color-active;
+    line-height: 16px;
+  }
+
+  .re-drop-down-list {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    width: 100%;
+    height: auto;
+    padding: 8px 0;
+    border-radius: 3px;
+    border: 1px solid $color-grey_dark;
+    box-shadow: 0 2px 12px 0 $color-grey_light;
+    background-color: $color-white;
+    font-size: 14px;
+
+    .drop-down-item {
+      padding: 0 20px;
+      margin: 0;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: center;
+      list-style: none;
+      color: $text-default;
+      cursor: pointer;
+      outline: none;
+
+      &:hover {
+        color: $color-active;
+        background-color: $color-grey_light;
+        cursor: pointer;
+      }
+    }
+  }
+}
