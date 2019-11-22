@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import LangMain from '@lib/lang/main'
+import Alert from '@lib/alert/main'
 
 const locale = new LangMain();
-Vue.prototype.$alert = (msg: string): void => {
-    console.log(msg)
-};
+Vue.prototype.$alert = Alert;
 Vue.prototype.$t = locale.ils8;
 Vue.prototype.$ils8 = locale.use;
+locale.use('123')
 
 new Vue({
     render: h => h(App),
