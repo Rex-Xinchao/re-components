@@ -1,0 +1,44 @@
+$text-default: #606266;
+$color-primary: #409eff;
+$color-active: #409eff;
+$color-success: #67C23A;
+$color-danger: #F56C6C;
+$color-warn: #E6A23C;
+$color-info: #909399;
+
+
+$color-white: #ffffff;
+$color-grey: #cccccc;
+$color-grey_dark: #909399;
+$color-grey_mid: #a0a0a0;
+$color-grey_light: #edf2fc;
+$color-black: #303133;
+$color-red: #ed4014;
+
+$color-background_main: #222F76;
+$color-background_light: rgba(62,115,227,0.05);
+$color-background_dark: #c0c0c0;
+
+$color-title: #17233d;
+$color-text: #515a6e;
+
+$color-border: #dcdee2;
+$color-shadow: rgba(163, 163, 163, 0.50);;
+
+@mixin no-space {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin box-shadow {
+  background: $color-white;
+  box-shadow: 0 1px 10px 0 $color-shadow;
+  border-radius: 6px;
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}  ;
+

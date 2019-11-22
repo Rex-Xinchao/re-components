@@ -3,8 +3,8 @@
   height: 20px;
   border-radius: 10px;
   float: left;
-  background-color: $color-success;
-  border: 1px solid $color-success;
+  background-color: $color-danger;
+  border: 1px solid $color-danger;
   overflow: hidden;
   cursor: pointer;
 
@@ -20,6 +20,8 @@
 }
 
 .re-switch-active {
+  background-color: $color-success;
+  border: 1px solid $color-success;
   .re-switch-circle {
     float: right;
   }
