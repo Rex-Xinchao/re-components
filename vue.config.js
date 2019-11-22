@@ -1,9 +1,8 @@
-const webpack = require('webpack')
-const path = require('path')
-
+const webpack = require('webpack');
+const path = require('path');
 const resolve = dir => {
   return path.join(__dirname, dir)
-}
+};
 module.exports = {
   outputDir: './dist',
   integrity: true,
@@ -18,6 +17,7 @@ module.exports = {
       .set('@style', resolve('src/styles'))
   },
   css: {
+    extract: false, // 强制把css并入js
     loaderOptions: {
       // 配置全局sass变量
       sass: {

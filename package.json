@@ -1,10 +1,12 @@
 {
   "name": "re-coms",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "dist/re-coms.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "build-npm": "vue-cli-service build --target lib --name re-coms ./src/index.js"
   },
   "dependencies": {
     "core-js": "^3.3.2",
