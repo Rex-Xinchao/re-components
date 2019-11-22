@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-    import {Vue, Component, Prop, Emit} from 'vue-property-decorator';
+    import {Vue, Component} from 'vue-property-decorator';
     import {textColorObj, bgColorObj} from '@lib/alert/config'
 
     @Component
@@ -18,7 +18,7 @@
         name = 're-alert';
         // data
         show: boolean = false;
-        type: 'default' | 'success' | 'error'| 'info' = null;
+        type: 'default' | 'success' | 'error' | 'info' = null;
         time: number = 3;
         message: string = null;
         textColor: string = null;

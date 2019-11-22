@@ -12,6 +12,7 @@
   position: absolute;
   top: 5vh;
   left: calc(50% - 190px);
+  z-index: 10000;
 
   .re-alert--text {
     @include no-space;
