@@ -1,0 +1,76 @@
+<template>
+    <div class="re-progress-circle" ref="progressCircle">
+        <canvas class="re-progress-chart" id="progressCircle"></canvas>
+        <span class="re-progress-text" ref="text">{{`${progress}%`}}</span>
+    </div>
+</template>
+
+<script lang="ts">
+    import {Vue, Component, Prop, Watch} from 'vue-property-decorator';
+    import {textColorObj, bgColorObj} from '@lib/alert/config'
+
+    @Component
+    export default class HelloWorld extends Vue {
+        $refs: {
+            [key: string]: (any);
+        };
+        name = 're-progress-circle';
+
+        @Prop({default: 50}) radius?: number;
+        @Prop({default: 8}) strokeWidth?: number;
+        @Prop({default: '#409eff'}) color?: string;
+        @Prop({default: 75, validator: val => val >= 0 && val <= 100}) progress?: number;
+
+        @Watch('progress')
+        onProgressChanged() {
+            this.createCircle();
+            this.setText()
+        }
+
+        // methods
+        createCircle() {
+            let canvas = <HTMLCanvasElement> document.getElementById('progressCircle');
+            let ctx = canvas.getContext('2d');
+            canvas.width = this.radius * 2;
+            canvas.height = this.radius * 2;
+            let x = this.radius;
+            let y = this.radius;
+            let size = this.radius - this.strokeWidth;
+            let start = Math.PI;
+            let end = Math.PI + 2 * this.progress / 100 * Math.PI;
+            ctx.beginPath();
+            ctx.arc(x, y, size, start, end);
+            ctx.strokeStyle = '#00ff99';
+            ctx.lineWidth = this.strokeWidth;
+            ctx.stroke();
+
+            let start_two = Math.PI + 2 * this.progress / 100 * Math.PI;
+            let end_two = Math.PI
+            ctx.beginPath();
+            ctx.arc(x, y, size, start_two, end_two);
+            ctx.strokeStyle = '#CCC';
+            ctx.lineWidth = this.strokeWidth;
+            ctx.stroke();
+        }
+
+        setText() {
+            let carWidth: number = 11; // %的宽度
+            let width: number = String(this.progress).length * 7;
+            let skewLength: number = (carWidth + width) / 2;
+            let top: string = (this.radius - 8) + 'px';
+            let left: string = (this.radius - skewLength) + 'px';
+            this.$refs.text.style.top = top;
+            this.$refs.text.style.left = left;
+        }
+
+        // 钩子函数
+        mounted() {
+            this.createCircle();
+            this.setText();
+        }
+    }
+</script>
+
+<style lang="scss">
+    @import "../styles/coms/progress";
+</style>

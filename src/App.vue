@@ -1,23 +1,21 @@
 <template>
   <div id="app">
-    <HelloWorld></HelloWorld>
     {{$t("compress.selectText")}}
+    <Re-Switch></Re-Switch>
+    <Re-Circle></Re-Circle>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/switch.vue';
+import ReSwitch from './components/switch.vue';
+import ReCircle from './components/circle_progress.vue';
 
 @Component({
   components: {
-    HelloWorld,
-  },
+      ReSwitch, ReCircle
+  }
 })
 export default class App extends Vue {
 }
 </script>
-
-<style lang="scss">
-  @import "./styles/index";
-</style>
