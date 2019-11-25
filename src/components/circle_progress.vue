@@ -8,6 +8,7 @@
 <script lang="ts">
     import {Vue, Component, Prop, Watch} from 'vue-property-decorator';
     import {textColorObj, bgColorObj} from '@lib/alert/config'
+    import {Circle} from '@interface/canvas'
 
     @Component
     export default class HelloWorld extends Vue {
@@ -33,28 +34,35 @@
             let ctx = canvas.getContext('2d');
             canvas.width = this.radius * 2;
             canvas.height = this.radius * 2;
-            let x = this.radius;
-            let y = this.radius;
-            let size = this.radius - this.strokeWidth;
-            let start = Math.PI;
-            let end = Math.PI + 2 * this.progress / 100 * Math.PI;
+            const circle_hl: Circle = {
+                x: this.radius,
+                y: this.radius,
+                size: this.radius - this.strokeWidth,
+                start: Math.PI,
+                end: Math.PI + 2 * this.progress / 100 * Math.PI,
+            };
             ctx.beginPath();
-            ctx.arc(x, y, size, start, end);
+            ctx.arc(circle_hl.x, circle_hl.y, circle_hl.size, circle_hl.start, circle_hl.end);
             ctx.strokeStyle = '#00ff99';
             ctx.lineWidth = this.strokeWidth;
             ctx.stroke();
 
-            let start_two = Math.PI + 2 * this.progress / 100 * Math.PI;
-            let end_two = Math.PI
+            const circle_bg: Circle = {
+                x: this.radius,
+                y: this.radius,
+                size: this.radius - this.strokeWidth,
+                start: Math.PI + 2 * this.progress / 100 * Math.PI,
+                end: Math.PI,
+            };
             ctx.beginPath();
-            ctx.arc(x, y, size, start_two, end_two);
+            ctx.arc(circle_bg.x, circle_bg.y, circle_bg.size, circle_bg.start, circle_bg.end);
             ctx.strokeStyle = '#CCC';
             ctx.lineWidth = this.strokeWidth;
             ctx.stroke();
         }
 
         setText() {
-            let carWidth: number = 11; // %的宽度
+            let carWidth: number = 11; // 符号%的宽度
             let width: number = String(this.progress).length * 7;
             let skewLength: number = (carWidth + width) / 2;
             let top: string = (this.radius - 8) + 'px';

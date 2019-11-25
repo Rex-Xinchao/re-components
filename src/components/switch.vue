@@ -17,7 +17,7 @@
         isSwitch: boolean = false;
 
         // computed
-        get _isActive(): String {
+        get _isActive(): string {
             if (this.isDisabled) {
                 return 're-switch-disabled'
             }
@@ -25,10 +25,10 @@
         }
 
         // props
-        @Prop({default: () => false}) isDisabled?: Boolean;
-        @Prop({default: '$color-success'}) activeColor?: String;
-        @Prop({default: '$color-danger'}) inactiveColor?: String;
-        @Prop({default: 40}) width?: Number;
+        @Prop({default: () => false}) isDisabled?: boolean;
+        @Prop({default: '$color-success'}) activeColor?: string;
+        @Prop({default: '$color-danger'}) inactiveColor?: string;
+        @Prop({default: 40}) width?: number;
 
         // methods
         switchToggle() {
@@ -38,7 +38,7 @@
         };
 
         setBackgroundColor() {
-            let newColor: String = this.isSwitch ? this.activeColor : this.inactiveColor;
+            let newColor: string = this.isSwitch ? this.activeColor : this.inactiveColor;
             this.$refs.switch.style.borderColor = newColor;
             this.$refs.switch.style.backgroundColor = newColor;
         };
