@@ -3,7 +3,6 @@ import AlertMain from './libs/alert/main'
 import Switch from './components/switch.vue'
 import './styles/coms/alert.scss'
 
-//todo 待实现组件select、table、开关、滑块、进度条、下拉菜单、日历
 const components = [
   Switch
 ]
