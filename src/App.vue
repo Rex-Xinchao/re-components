@@ -1,15 +1,15 @@
 <template>
     <div id="app">
-        <div class="item">
+        <div class="item" title="switch开关">
             <Re-Switch></Re-Switch>
         </div>
-        <div class="item">
+        <div class="item" title="进度条——圆形">
             <Re-Circle></Re-Circle>
         </div>
-        <div class="item">
+        <div class="item" title="进度条--线形">
             <Re-Line :height="25"></Re-Line>
         </div>
-        <div class="item">
+        <div class="item" title="图片上传">
             <Re-Upload></Re-Upload>
         </div>
     </div>
