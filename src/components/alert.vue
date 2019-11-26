@@ -11,7 +11,7 @@
     import {textColorObj, bgColorObj} from '@lib/alert/config'
 
     @Component
-    export default class HelloWorld extends Vue {
+    export default class ReAlert extends Vue {
         $refs: {
             [key: string]: (any);
         };

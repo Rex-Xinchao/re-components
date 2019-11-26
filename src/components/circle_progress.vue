@@ -11,7 +11,7 @@
     import {Circle} from '@interface/canvas'
 
     @Component
-    export default class HelloWorld extends Vue {
+    export default class ReCircleProgress extends Vue {
         $refs: {
             [key: string]: (any);
         };

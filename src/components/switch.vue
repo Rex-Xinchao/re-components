@@ -8,7 +8,7 @@
     import {Vue, Component, Prop, Emit} from 'vue-property-decorator';
 
     @Component
-    export default class HelloWorld extends Vue {
+    export default class ReSwitch extends Vue {
         $refs: {
             [key: string]: (any);
         };
