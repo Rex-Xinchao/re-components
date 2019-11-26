@@ -31,16 +31,16 @@
         }
 
         mounted () {
-            let $progress = this.$refs.progress
-            let $progressBar = $progress.firstChild
-            let $progressBarInner = $progressBar.firstChild
-            let $innerText = $progressBarInner.firstChild
-            this.strokeWidth = this.isInner && this.height < 16 ? 16 : this.height
-            $progress.style.width = this.width + 'px'
-            $progressBar.style.height = this.strokeWidth + 'px'
-            $progressBarInner.style.width = this.progress + '%'
-            $progressBarInner.style.backgroundColor = this.color
-            $innerText.style.lineHeight = this.strokeWidth + 'px'
+            let $progress = this.$refs.progress;
+            let $progressBar = $progress.firstChild;
+            let $progressBarInner = $progressBar.firstChild;
+            let $innerText = $progressBarInner.firstChild;
+            this.strokeWidth = this.isInner && this.height < 16 ? 16 : this.height;
+            $progress.style.width = this.width + 'px';
+            $progressBar.style.height = this.strokeWidth + 'px';
+            $progressBarInner.style.width = this.progress + '%';
+            $progressBarInner.style.backgroundColor = this.color;
+            $innerText.style.lineHeight = this.strokeWidth + 'px';
         }
     }
 </script>

@@ -2,11 +2,13 @@ import LangMain from './libs/lang/main'
 import AlertMain from './libs/alert/main'
 import Switch from './components/switch.vue'
 import CircleProgress from './components/circle_progress.vue'
+import LineProgress from './components/line_progress.vue'
 import './styles/coms/alert.scss'
 
 const components = [
   Switch,
-  CircleProgress
+  CircleProgress,
+  LineProgress
 ]
 
 const install = function (Vue, ops = {}) {
@@ -26,5 +28,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   Switch,
-  CircleProgress
+  CircleProgress,
+  LineProgress
 }
