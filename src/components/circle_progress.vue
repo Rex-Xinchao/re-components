@@ -1,5 +1,5 @@
 <template>
-    <div class="re-progress-circle" ref="progressCircle">
+    <div class="re-progress-circle" ref="progress">
         <canvas class="re-progress-chart" id="progressCircle"></canvas>
         <span class="re-progress-text" ref="text">{{`${progress}%`}}</span>
     </div>
@@ -30,6 +30,9 @@
 
         // methods
         createCircle() {
+            let $progress = this.$refs.progress;
+            $progress.style.width = this.radius * 2 + 'px';
+            $progress.style.height = this.radius * 2 + 'px';
             let canvas = <HTMLCanvasElement> document.getElementById('progressCircle');
             let ctx = canvas.getContext('2d');
             canvas.width = this.radius * 2;

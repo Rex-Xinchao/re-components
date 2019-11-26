@@ -1,6 +1,6 @@
 <template>
     <div class="re-progress" ref="progress">
-        <div class="re-progress-bar">
+        <div class="re-progress-bar" ref="bar">
             <div class="re-progress-bar_inner">
                 <div class="re-progress-text_inner" v-show="isInner">{{`${progress}%`}}</div>
             </div>
@@ -26,16 +26,18 @@
         @Prop({default: 50, validator: val => val >= 0 && val <= 100}) progress: number;
 
         @Watch('progress')
-        onProgressChange () {
+        onProgressChange() {
             this.$refs.progress.firstChild.firstChild.style.width = this.progress + '%'
         }
 
-        mounted () {
+        mounted() {
             let $progress = this.$refs.progress;
+            let $bar = this.$refs.bar;
             let $progressBar = $progress.firstChild;
             let $progressBarInner = $progressBar.firstChild;
             let $innerText = $progressBarInner.firstChild;
             this.strokeWidth = this.isInner && this.height < 16 ? 16 : this.height;
+            $bar.style.width = this.isInner ? '100%' : 'calc(100% - 50px)';
             $progress.style.width = this.width + 'px';
             $progressBar.style.height = this.strokeWidth + 'px';
             $progressBarInner.style.width = this.progress + '%';
