@@ -12,6 +12,9 @@
         <div class="item" title="图片上传">
             <Re-Upload></Re-Upload>
         </div>
+        <!--<div class="item" title="截屏" id="screen">-->
+            <!--<ReScreenShot targetId="screen"></ReScreenShot>-->
+        <!--</div>-->
     </div>
 </template>
 
@@ -21,10 +24,11 @@
     import ReCircle from './components/circle_progress.vue';
     import ReLine from './components/line_progress.vue';
     import ReUpload from './components/upload.vue';
+    import ReScreenShot from './components/screenshot.vue';
 
     @Component({
         components: {
-            ReSwitch, ReCircle, ReLine, ReUpload
+            ReSwitch, ReCircle, ReLine, ReUpload, ReScreenShot
         }
     })
     export default class App extends Vue {
