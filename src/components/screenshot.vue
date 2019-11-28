@@ -8,7 +8,7 @@
 <script lang="ts">
     import {Vue, Component, Prop, Emit} from 'vue-property-decorator';
     // ts 引入js失败的问题
-    import html2canvas from '../libs/html2canvas/html2canvas.js'
+    // import html2canvas from '../libs/html2canvas/html2canvas.js'
     declare let html2canvas: (dom:any, opts:any) => {
         then: (canvas: any) => void
     };
