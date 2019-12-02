@@ -8,6 +8,7 @@
 <script lang="ts">
     import {Vue, Component, Prop, Emit} from 'vue-property-decorator';
     import html2canvas from 'html2canvas'
+    import {dataURIToBlob, downloadFile} from '@lib/file/file'
 
     interface Opt {
         allowTaint: boolean
@@ -20,10 +21,10 @@
     }
 
     @Component
-    export default class ReSwitch extends Vue {
+    export default class ReScreenShot extends Vue {
         $alert: any;
         $t: any;
-        name: 're-screenshot';
+        name: 're-screenShot';
         options: Opt = {
             allowTaint: true,//允许加载跨域的图片
             tainttest: true, //检测每张图片都已经加载完成
@@ -61,11 +62,11 @@
             canvas.width = (width + offsetLeft) * scale;   // 注意宽度问题， 是否存在左右间距
             canvas.height = (height + offsetTop) * scale;  // 注意高度问题，由于顶部有个距离所以要加上顶部的距离，解决图像高度偏移问题
             context.scale(scale, scale);
-            let opts = Object.assign(this.options, {scale, width, height})
+            let opts = Object.assign(this.options, {scale, width, height});
             html2canvas(dom, opts).then((canvas: any) => {
                 imageUrl = canvas.toDataURL('image/png');
                 this.downLoad(imageUrl);
-                this.$emit('onImageChange', imageUrl)
+                this.onImageChange(imageUrl)
             });
         };
 
@@ -73,47 +74,18 @@
             if (!imageUrl) {
                 this.$alert(this.$t('screenshots.alert'), 'error')
             } else {
-                this.dataURIToBlob(imageUrl); // 先转化成blob文件，不然base64的长度会超出href的长度限制下载失败
+                const blob: any = dataURIToBlob(imageUrl);
+                downloadFile(blob, this.fileName);
             }
         }
 
-        dataURIToBlob(dataURI: string) {
-            let arr: any[] = dataURI.split(','),
-                type: string = arr[0].match(/:(.*?);/)[1],
-                str:any = atob(arr[1]),
-                n: number = str.length,
-                u8arr = new Uint8Array(n);
-            while (n--) {
-                u8arr[n] = str.charCodeAt(n);
-            }
-            this.callback(new Blob([u8arr], { type: type }));
-        };
-
-        callback(blob: any) {
-            let a = <any>document.createElement('a');
-            a.innerHTML = ' ';
-            a.id = 'download-btn-pic';
-            a.download = this.fileName || '截图'; //不能为空，ie浏览器会不能兼容
-            a.innerHTML = 'download';
-            a.href = <any> window.URL.createObjectURL(blob);
-            console.log(a.href)
-            this.clickEvent(a);
-        };
-
-        clickEvent(a: any) {
-            if (document.all) {
-                a.click();
-                a.remove()
-            } else {
-                let evt = document.createEvent("MouseEvents");
-                evt.initEvent("click", true, true);
-                a.dispatchEvent(evt);
-                a.remove();
-            }
-        };
+        @Emit()
+        onImageChange(imageUrl: string) {
+            return imageUrl
+        }
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    @import "../styles/coms/screenshot";
 </style>

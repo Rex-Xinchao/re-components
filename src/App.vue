@@ -9,8 +9,9 @@
         <div class="item" title="进度条--线形">
             <Re-Line :height="25"></Re-Line>
         </div>
-        <div class="item" title="图片上传" id="screen">
-            <Re-Upload></Re-Upload>
+        <div class="item-upload" title="图片上传" id="screen">
+            <Re-Upload :fileAmount="2" :url="'https://jsonplaceholder.typicode.com/posts/'"
+                       @change="onUploadChange"></Re-Upload>
         </div>
         <div class="item" title="截屏">
             <ReScreenShot targetId="screen"></ReScreenShot>
@@ -32,6 +33,10 @@
         }
     })
     export default class App extends Vue {
+        onUploadChange(res: any) {
+            console.log(res.file);
+            console.log(res.fileList);
+        }
     }
 </script>
 <style lang="scss" scoped>
@@ -45,5 +50,9 @@
         justify-items: center;
         align-content: center;
         align-items: center;
+
+        .item-upload {
+            grid-column: 4 / 6;
+        }
     }
 </style>

@@ -34,6 +34,7 @@
 
 <script lang="ts">
     import {Vue, Component, Prop, Emit} from 'vue-property-decorator';
+    import {registerDrag} from '@lib/file/file'
 
     interface Request {
         id: number
@@ -70,7 +71,7 @@
         @Prop({default: () => ['image/jpeg', 'image/png', 'image/jpg']}) fileType: string[];
         @Prop({default: 2}) fileSize: number;
         @Prop({default: 9}) fileAmount: number;
-        @Prop({default: 9}) url!: string;
+        @Prop() url!: string;
 
         onToolOver(index: number) {
             this.toolShow = true;
@@ -84,7 +85,7 @@
 
         deleteFile(index: number, file: File) {
             this.fileList.splice(index, 1);
-            this.$emit('change', file, this.fileList);
+            this.change(file, this.fileList);
         };
 
         enlargeFile(file: File) {
@@ -117,7 +118,7 @@
             }
             if (this.fileAmount && [...this.fileList, ...Object.values(fileList)].length > this.fileAmount) {
                 // 上传图片数量不能大于9张!
-                this.$alert('上传图片数量不能大于9张!', 'error');
+                this.$alert('上传图片数量不能大于' + this.fileAmount + '张!', 'error');
                 return
             }
             if (isFileType && isLtSize) {
@@ -136,21 +137,21 @@
 
         uploadFile(fileList: any[]) {  // 调用上传接口
             Object.values(fileList).forEach(file => {
-                let formData = new FormData()
-                formData.append('file', file)
+                let formData = new FormData();
+                formData.append('file', file);
                 this.$axios.get(this.url, {data: formData}).then(res => {
-                    file.id = (res as any).id
+                    file.id = (res as any).id;
                     if ((<any>window).FileReader) {
                         let reader = new FileReader();
                         reader.readAsDataURL(file);
                         reader.onloadend = e => {
                             file.url = (e.target as any).result;
                             this.fileList = [...this.fileList, file];
-                            this.$emit('change', file, this.fileList)
+                            this.change(file, this.fileList)
                         }
                     } else {
                         this.fileList = [...this.fileList, file];
-                        this.$emit('change', file, this.fileList)
+                        this.change(file, this.fileList);
                     }
                 }).catch(error => {
                     this.$alert(error, 'error')
@@ -158,30 +159,14 @@
             })
         };
 
+        @Emit()
+        change(file: File, fileList: File[]) {
+            return {file, fileList}
+        }
+
         mounted() {
-            // 拖拽事件
-            this.$refs.upload_box.onclick = () => {
-                this.$refs.input.click()
-            }
-            this.$refs.upload_box.ondragstart = () => {
-                return false
-            }
-            this.$refs.upload_box.ondragleave = (e: any) => {
-                e.preventDefault()// 阻止离开时的浏览器默认行为
-            }
-            this.$refs.upload_box.ondrop = (e: any) => {
-                e.preventDefault()// 阻止拖放后的浏览器默认行为
-                const fileList = e.dataTransfer.files// 获取文件对象
-                if (fileList) {
-                    this.onFileChange(fileList)// 上传文件的方法
-                }
-            }
-            this.$refs.upload_box.ondragenter = (e: any) => {
-                e.preventDefault()//  阻止拖入时的浏览器默认行为
-            }
-            this.$refs.upload_box.ondragover = (e: any) => {
-                e.preventDefault()//  阻止拖来拖去的浏览器默认行为
-            }
+            // 注册拖拽事件
+            registerDrag(this.$refs.upload_box, this.$refs.input, this.onFileChange)
         };
     }
 </script>
