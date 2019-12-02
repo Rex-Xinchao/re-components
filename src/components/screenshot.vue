@@ -50,8 +50,8 @@
         }
 
         saveAsImage(): void {
-            let imageUrl = ''
-            let dom = <HTMLScriptElement>document.getElementById(this.targetId) //获取目标对象
+            let imageUrl = '';
+            let dom = <HTMLScriptElement>document.getElementById(this.targetId); //获取目标对象
             let canvas = <HTMLCanvasElement>document.createElement('canvas');  //创建canvas 对象
             let width = dom.offsetWidth;  // 获取(原生）dom 宽度
             let height = dom.offsetHeight; // 获取(原生）dom 高
