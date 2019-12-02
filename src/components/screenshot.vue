@@ -78,10 +78,10 @@
         }
 
         dataURIToBlob(dataURI: string) {
-            let arr = dataURI.split(','),
-                type = arr[0].match(/:(.*?);/)[1],
-                str = atob(arr[1]),
-                n = str.length,
+            let arr: any[] = dataURI.split(','),
+                type: string = arr[0].match(/:(.*?);/)[1],
+                str:any = atob(arr[1]),
+                n: number = str.length,
                 u8arr = new Uint8Array(n);
             while (n--) {
                 u8arr[n] = str.charCodeAt(n);
