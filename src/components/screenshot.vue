@@ -7,11 +7,8 @@
 
 <script lang="ts">
     import {Vue, Component, Prop, Emit} from 'vue-property-decorator';
-    // ts 引入js失败的问题
-    // import html2canvas from '../libs/html2canvas/html2canvas.js'
-    declare let html2canvas: (dom:any, opts:any) => {
-        then: (canvas: any) => void
-    };
+    import html2canvas from 'html2canvas'
+
     interface Opt {
         allowTaint: boolean
         tainttest: boolean
@@ -81,15 +78,15 @@
         }
 
         dataURIToBlob(dataURI: string) {
-            let binStr = atob(dataURI.split(',')[1]),
-                len = binStr.length,
-                arr = new Uint8Array(len);
-
-            for (let i = 0; i < len; i++) {
-                arr[i] = binStr.charCodeAt(i);
+            let arr = dataURI.split(','),
+                mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]),
+                n = bstr.length,
+                u8arr = new Uint8Array(n);
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n);
             }
-
-            this.callback(new Blob([arr]));
+            this.callback(new Blob([u8arr], { type: mime }));
         };
 
         callback(blob: any) {
@@ -98,7 +95,8 @@
             a.id = 'download-btn-pic';
             a.download = this.fileName || '截图'; //不能为空，ie浏览器会不能兼容
             a.innerHTML = 'download';
-            a.href = URL.createObjectURL(blob);
+            a.href = <any> window.URL.createObjectURL(blob);
+            console.log(a.href)
             this.clickEvent(a);
         };
 

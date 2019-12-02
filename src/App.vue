@@ -9,12 +9,12 @@
         <div class="item" title="进度条--线形">
             <Re-Line :height="25"></Re-Line>
         </div>
-        <div class="item" title="图片上传">
+        <div class="item" title="图片上传" id="screen">
             <Re-Upload></Re-Upload>
         </div>
-        <!--<div class="item" title="截屏" id="screen">-->
-            <!--<ReScreenShot targetId="screen"></ReScreenShot>-->
-        <!--</div>-->
+        <div class="item" title="截屏">
+            <ReScreenShot targetId="screen"></ReScreenShot>
+        </div>
     </div>
 </template>
 
