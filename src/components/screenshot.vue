@@ -24,7 +24,7 @@
     export default class ReScreenShot extends Vue {
         $alert: any;
         $t: any;
-        name: 're-screenShot';
+        name = 're-screenShot';
         options: Opt = {
             allowTaint: true,//允许加载跨域的图片
             tainttest: true, //检测每张图片都已经加载完成

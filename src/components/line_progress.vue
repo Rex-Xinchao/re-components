@@ -13,7 +13,7 @@
     import {Vue, Component, Prop, Watch} from 'vue-property-decorator'
 
     @Component
-    export default class ReSwitch extends Vue {
+    export default class ReProgressLine extends Vue {
         $refs: {
             [key: string]: (any);
         };

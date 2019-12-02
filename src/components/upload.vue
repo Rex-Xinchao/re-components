@@ -113,7 +113,7 @@
             }
             if (!isLtSize) {
                 // 上传图片大小不能超过 2MB!
-                this.$alert('上传图片大小不能超过 2MB!', 'error');
+                this.$alert('上传图片大小不能超过 '+ this.fileSize + 'MB!', 'error');
                 return
             }
             if (this.fileAmount && [...this.fileList, ...Object.values(fileList)].length > this.fileAmount) {
@@ -123,7 +123,6 @@
             }
             if (isFileType && isLtSize) {
                 this.uploadFile(fileList);
-
             }
         };
 

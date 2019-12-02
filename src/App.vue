@@ -16,6 +16,9 @@
         <div class="item" title="截屏">
             <ReScreenShot targetId="screen"></ReScreenShot>
         </div>
+        <div class="item" title="压缩">
+            <ReCompress :size="{maxWidth: 100,maxHeight: 100}"></ReCompress>
+        </div>
     </div>
 </template>
 
@@ -26,10 +29,11 @@
     import ReLine from './components/line_progress.vue';
     import ReUpload from './components/upload.vue';
     import ReScreenShot from './components/screenshot.vue';
+    import ReCompress from './components/compress.vue';
 
     @Component({
         components: {
-            ReSwitch, ReCircle, ReLine, ReUpload, ReScreenShot
+            ReSwitch, ReCircle, ReLine, ReUpload, ReScreenShot, ReCompress
         }
     })
     export default class App extends Vue {
