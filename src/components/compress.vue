@@ -50,7 +50,6 @@
         $refs: any;
         $alert: any;
         $t: any;
-        name = 're-compress';
         file: FileOps = {
             name: null,
             size: null,

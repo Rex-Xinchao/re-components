@@ -58,7 +58,6 @@
             [key: string]: (any);
         };
         $alert: any;
-        name = 're-upload';
         model: any = {
             show: false,
             url: ''

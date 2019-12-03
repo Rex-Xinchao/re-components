@@ -11,11 +11,10 @@
     import {Circle} from '@interface/canvas'
 
     @Component
-    export default class ReCircleProgress extends Vue {
+    export default class ReCircle extends Vue {
         $refs: {
             [key: string]: (any);
         };
-        name = 're-progress-circle';
 
         @Prop({default: 50}) radius?: number;
         @Prop({default: 8}) strokeWidth?: number;

@@ -15,7 +15,6 @@
         $refs: {
             [key: string]: (any);
         };
-        name = 're-alert';
         // data
         show: boolean = false;
         type: 'default' | 'success' | 'error' | 'info' = null;

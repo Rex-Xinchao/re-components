@@ -13,11 +13,10 @@
     import {Vue, Component, Prop, Watch} from 'vue-property-decorator'
 
     @Component
-    export default class ReProgressLine extends Vue {
+    export default class ReLine extends Vue {
         $refs: {
             [key: string]: (any);
         };
-        name = 're-progress_line';
         strokeWidth: number = 250;
         @Prop({default: 250}) width: number;
         @Prop({default: 6}) height: number;

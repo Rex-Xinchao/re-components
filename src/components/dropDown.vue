@@ -16,7 +16,6 @@
     @Component
     export default class ReDropDown extends Vue {
         $refs: any;
-        name = 're-drop-down';
         isShow: boolean = false;
         @Prop() text: string;
         @Prop({default: 80}) width: number;

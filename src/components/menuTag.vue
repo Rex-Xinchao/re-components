@@ -19,8 +19,7 @@
     import {Vue, Component, Prop, Emit} from 'vue-property-decorator';
 
     @Component
-    export default class ReMenuTag extends Vue {
-        name = 're-menu';
+    export default class ReMenu extends Vue {
         @Prop() options!: any;
         @Prop() default: [String, Number];
         @Prop({default: '#fff'}) backgroundColor: string;

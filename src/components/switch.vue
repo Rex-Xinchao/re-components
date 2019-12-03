@@ -12,7 +12,6 @@
         $refs: {
             [key: string]: (any);
         };
-        name = 're-switch';
         // data
         isSwitch: boolean = false;
 

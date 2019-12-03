@@ -24,7 +24,6 @@
 
     @Component
     export default class ReDrag extends Vue {
-        name = 're-drag';
         dragging: Options = {
             listName: null,
             key: null
