@@ -12,9 +12,9 @@
         </div>
         <div class="item-alert" title="alert">
             <div>
-                <button style="float: left" @click="$alert('hello')">hello</button>
-                <button style="float: left" @click="$alert('success', 'success')">success</button>
-                <button style="float: left" @click="$alert('danger', 'error')">danger</button>
+                <button class="re-button" style="float: left" @click="$alert('hello')">hello</button>
+                <button class="re-button" style="float: left" @click="$alert('success', 'success')">success</button>
+                <button class="re-button" style="float: left" @click="$alert('danger', 'error')">danger</button>
             </div>
         </div>
         <div class="item" title="开关">
@@ -97,6 +97,15 @@
         };
     }
 </script>
+<style lang="scss">
+    body{
+        --main-color: #409eff;
+        --main-color_light: #66b1ff;
+        --text-color: #ffffff;
+        --btn-size: 8px 15px;
+    }
+    @import './styles/basic';
+</style>
 <style lang="scss" scoped>
     #app {
         width: 100%;

@@ -1,5 +1,5 @@
-@import './icon';
-@import './animation';
+@import './icons/index';
+@import './animations/index';
 
 $text-default: #606266;
 $color-primary: #409eff;
@@ -43,5 +43,5 @@ $color-shadow: rgba(163, 163, 163, 0.50);;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}  ;
+}
 

@@ -1,6 +1,6 @@
 {
   "name": "re-components",
-  "version": "1.8.0",
+  "version": "1.8.2",
   "private": false,
   "main": "dist/re-coms.common.js",
   "scripts": {

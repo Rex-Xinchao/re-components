@@ -8,7 +8,6 @@ const locale = new LangMain();
 Vue.prototype.$alert = Alert;
 Vue.prototype.$t = locale.ils8;
 Vue.prototype.$ils8 = locale.use;
-locale.use('123');
 
 Vue.use(v => {
     v.prototype.$axios = axios
