@@ -109,3 +109,4 @@ fileAmount: { type: Number, default: 9 },#上传文件数量限制
 url: { type: String, required: true }#上传url
 
 ```
+[github地址-分支（typescript）](https://github.com/Rex-Xinchao/re-components).
