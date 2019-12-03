@@ -10,6 +10,7 @@ import ScreenShot from './components/screenshot.vue'
 import Switch from './components/switch.vue'
 import Upload from './components/upload.vue'
 import './styles/coms/alert.scss'
+import axios from "axios";
 
 const components = [
   CircleProgress,
@@ -28,6 +29,7 @@ const install = function (Vue, ops = {}) {
     Vue.component(com.name, com)
   })
   const locale = new LangMain()
+  Vue.prototype.$axios = axios
   Vue.prototype.$alert = AlertMain;
   Vue.prototype.$t = locale.ils8
   Vue.prototype.$ils8 = locale.use

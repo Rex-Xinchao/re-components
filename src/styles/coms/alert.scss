@@ -9,7 +9,7 @@
   border: 1px solid $color-grey_dark;
   box-sizing: border-box;
   background-color: $color-grey_light;
-  position: absolute;
+  position: fixed;
   top: 5vh;
   left: calc(50% - 190px);
   z-index: 10000;
