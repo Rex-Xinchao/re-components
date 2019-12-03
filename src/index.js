@@ -1,14 +1,26 @@
 import LangMain from './libs/lang/main'
 import AlertMain from './libs/alert/main'
-import Switch from './components/switch.vue'
 import CircleProgress from './components/circle_progress.vue'
+import Compress from './components/compress.vue'
+import Drag from './components/drag.vue'
+import DropDown from './components/dropDown.vue'
 import LineProgress from './components/line_progress.vue'
+import MenuTag from './components/menuTag.vue'
+import ScreenShot from './components/screenshot.vue'
+import Switch from './components/switch.vue'
+import Upload from './components/upload.vue'
 import './styles/coms/alert.scss'
 
 const components = [
-  Switch,
   CircleProgress,
-  LineProgress
+  Compress,
+  Drag,
+  DropDown,
+  LineProgress,
+  MenuTag,
+  ScreenShot,
+  Switch,
+  Upload
 ]
 
 const install = function (Vue, ops = {}) {
@@ -27,7 +39,13 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   install,
-  Switch,
   CircleProgress,
-  LineProgress
+  Compress,
+  Drag,
+  DropDown,
+  LineProgress,
+  MenuTag,
+  ScreenShot,
+  Switch,
+  Upload
 }
