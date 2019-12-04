@@ -33,24 +33,15 @@ const getDataType = data => {
 };
 
 const deepClone = obj => {
-  const type = getDataType(obj);
-  if (['string', 'number', 'boolean', 'undefined', 'regExp', 'date'].indexOf(type) >= 0) {
-    return obj
-  } else if (type === 'arry') {
-    let back = [];
-    obj.forEach(item => {
-      back.push(deepClone(item))
-    });
-    return back
-  } else if (type === 'object') {
-    let back = {};
-    for (let key in obj) {
-      back[key] = deepClone(obj[key])
+  let type = getDataType(obj);
+  if ( type === 'object' || type === 'arry' ) {
+    let back = type === 'object' ? {} : [];
+    for( let key in obj ) {
+      back[key] = deepClone(obj[key]);
     }
-    return back
-  } else if (type === 'function') {
-    return obj
+    return back;
   }
+  return obj;
 };
 
 export { toUnderline, getDataType, deepClone }
