@@ -43,5 +43,4 @@
         --text-color: #ffffff;
         --btn-size: 8px 15px;
     }
-    @import './styles/basic';
 </style>
