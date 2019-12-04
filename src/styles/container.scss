@@ -1,0 +1,37 @@
+.container-horizontal, .container-vertical {
+  display: flex;
+  flex: 1;
+  flex-basis: auto;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.container-horizontal {
+  flex-direction: row;
+}
+
+.container-vertical {
+  flex-direction: column;
+}
+
+.header, .footer {
+  flex-shrink: 0;
+  padding: 0 8px;
+  height: 60px;
+  line-height: 60px;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.main {
+  flex: 1;
+  flex-basis: auto;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
