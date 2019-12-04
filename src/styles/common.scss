@@ -42,6 +42,14 @@ $color-shadow: rgba(163, 163, 163, 0.50);;
   white-space: nowrap;
 }
 
+@mixin text-ellipsis-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 @import './icons/index';
 @import './animations/index';
 @import "./container";
