@@ -1,3 +1,4 @@
+import Vue from "vue";
 import langMain from "../lib/lang/main";
 import Alert from "./alert/index";
 import AlertMain from "./alert/main";
@@ -11,6 +12,7 @@ import Screenshot from "./screenshot/index";
 import Switch from "./switch/index";
 import Upload from "./upload/index";
 import Input from "./input/index";
+
 const components = [
   Alert,
   Compress,
@@ -24,7 +26,6 @@ const components = [
   Upload,
   Input
 ];
-
 const install = function(Vue, ops = {}) {
   components.forEach(com => {
     Vue.component(com.name, com);
@@ -35,21 +36,4 @@ const install = function(Vue, ops = {}) {
   Vue.prototype.$ils8 = locale.use;
 };
 
-if (typeof window !== "undefined" && window.Vue) {
-  install(window.Vue);
-}
-
-export default {
-  install,
-  Alert,
-  Compress,
-  Drag,
-  DropMenu,
-  MenuTag,
-  LineProgress,
-  CircleProgress,
-  Screenshot,
-  Switch,
-  Upload,
-  Input
-};
+Vue.use(install);
