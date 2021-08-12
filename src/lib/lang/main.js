@@ -1,22 +1,25 @@
 import langSum from "./index";
+import Vue from "vue";
 
-let languageOpts = langSum["zhCN"];
-const locale = function() {};
+const locale = function(lang = "zhCN") {
+  this.languageOpts = langSum[lang];
+};
+
 locale.prototype = {
   use: function(lang) {
     if (!lang) {
-      this.$alert("语言不能为空", "error");
+      Vue.prototype.$alert("语言不能为空", "error");
       return;
     }
     if (!langSum[lang]) {
-      this.$alert("该语言暂不支持", "error");
+      Vue.prototype.$alert("该语言暂不支持", "error");
     } else {
-      languageOpts = langSum[lang];
+      this.languageOpts = langSum[lang];
     }
   },
-  ils8: function(keyString) {
+  transf: function(keyString) {
     let keyList = keyString.split(".");
-    let opts = languageOpts;
+    let opts = this.languageOpts;
     let text = "";
     keyList.forEach(k => {
       for (let key in opts) {
@@ -30,6 +33,15 @@ locale.prototype = {
       }
     });
     return text;
+  },
+  deepClone(source, target) {
+    for (let key in source) {
+      if (typeof source[key] === "object") {
+        this.deepClone(source[key], target[key]);
+      } else {
+        source[key] = target[key];
+      }
+    }
   }
 };
 

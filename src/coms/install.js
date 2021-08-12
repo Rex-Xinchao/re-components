@@ -30,10 +30,8 @@ const install = function(Vue, ops = {}) {
   components.forEach(com => {
     Vue.component(com.name, com);
   });
-  const locale = new langMain();
   Vue.prototype.$alert = AlertMain;
-  Vue.prototype.$t = locale.ils8;
-  Vue.prototype.$ils8 = locale.use;
+  Vue.prototype.$ils8 = new langMain("zhCN");
 };
 
 Vue.use(install);

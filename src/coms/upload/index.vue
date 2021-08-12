@@ -1,35 +1,38 @@
 <template>
-    <div class="re-upload-container">
-        <div class="re-upload">
-            <ul class="re-uploaded-pic-list">
-                <li v-for="(file, index) in fileList" :key="index"
-                    @mouseover="onToolOver(index)"
-                    @mouseleave="onToolLeave(index)">
-                    <div class="re-pic-show" :style="{backgroundImage: `url('${file.url}')`}"></div>
-                    <div v-show="toolShow && index === toolIndex" class="re-uploaded-tools">
-                        <div class="tools-icon">
-                            <div @click="enlargeFile(file)" class="icon-enlarge"></div>
-                            <div @click="deleteFile(index, file)" class="icon-trash"></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <div class="re-upload-box" ref='upload_box'>
-                <i class="re-upload-icon"></i>
-                <div class="re-upload-text">{{$t('upload.tip')}}</div>
-                <input type="file" ref="input" class="re-upload-input" multiple @change="onFileUpload">
+  <div class="re-upload-container">
+    <div class="re-upload">
+      <ul class="re-uploaded-pic-list">
+        <li
+          v-for="(file, index) in fileList"
+          :key="index"
+          @mouseover="onToolOver(index)"
+          @mouseleave="onToolLeave(index)"
+        >
+          <div class="re-pic-show" :style="{ backgroundImage: `url('${file.url}')` }"></div>
+          <div v-show="toolShow && index === toolIndex" class="re-uploaded-tools">
+            <div class="tools-icon">
+              <div @click="enlargeFile(file)" class="icon-enlarge"></div>
+              <div @click="deleteFile(index, file)" class="icon-trash"></div>
             </div>
-        </div>
-        <div class="re-upload-tips" v-html="tips"></div>
-        <div class="re-model" v-show="model.show">
-            <button class="re-close-btn">
-                <div class="icon-close" @click="model.show = false"></div>
-            </button>
-            <div class="re-model-body">
-                <img class="image-show" :alt="model.name" :src="model.url">
-            </div>
-        </div>
+          </div>
+        </li>
+      </ul>
+      <div class="re-upload-box" ref="upload_box">
+        <i class="re-upload-icon"></i>
+        <div class="re-upload-text">{{ $ils8.transf('upload.tip') }}</div>
+        <input type="file" ref="input" class="re-upload-input" multiple @change="onFileUpload" />
+      </div>
     </div>
+    <div class="re-upload-tips" v-html="tips"></div>
+    <div class="re-model" v-show="model.show">
+      <button class="re-close-btn">
+        <div class="icon-close" @click="model.show = false"></div>
+      </button>
+      <div class="re-model-body">
+        <img class="image-show" :alt="model.name" :src="model.url" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -41,7 +44,7 @@ export default {
     tips: { type: String, default: '只能上传jpg/png文件，且不超过500kb' },
     fileType: {
       type: Array,
-      default: e => {
+      default: (e) => {
         return ['image/jpeg', 'image/png', 'image/jpg']
       }
     },
@@ -50,7 +53,7 @@ export default {
     url: { type: String, required: true }
   },
   mixins: [UploadFile],
-  data () {
+  data() {
     return {
       model: {
         show: false,
@@ -63,19 +66,19 @@ export default {
     }
   },
   methods: {
-    onToolOver (index) {
+    onToolOver(index) {
       this.toolShow = true
       this.toolIndex = index
     },
-    onToolLeave (index) {
+    onToolLeave(index) {
       this.toolShow = false
       this.toolIndex = index
     },
-    deleteFile (index, file) {
+    deleteFile(index, file) {
       this.fileList.splice(index, 1)
       this.$emit('change', file, this.fileList)
     },
-    enlargeFile (file) {
+    enlargeFile(file) {
       this.model.show = true
       this.model.name = file.name
       this.model.url = file.url
@@ -84,6 +87,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    @import "../../styles/index";
-    @import "../../styles/coms/upload";
+@import '../../styles/index';
+@import '../../styles/coms/upload';
 </style>

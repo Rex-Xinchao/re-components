@@ -13,7 +13,7 @@ export default {
   watch: {},
   methods: {},
   mounted() {
-    this.$ils8('en')
+    this.$ils8.use('en')
   }
 }
 </script>
