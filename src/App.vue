@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="main">
-    <re-compress></re-compress>
+    <re-compress :size="{ maxWidth: 100, maxHeight: 100 }"></re-compress>
   </div>
 </template>
 
@@ -12,9 +12,7 @@ export default {
   },
   watch: {},
   methods: {},
-  mounted() {
-    this.$ils8.use('en')
-  }
+  mounted() {}
 }
 </script>
 <style lang="scss" scoped>
